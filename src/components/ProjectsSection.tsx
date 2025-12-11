@@ -8,6 +8,8 @@ const projects = [
     icon: Bot,
     gradient: 'from-primary to-secondary',
     featured: true,
+    github: 'https://github.com/its-ousama/finance-coach-chatbot',
+    demo: null,
   },
   {
     title: 'Shoe Parallaz',
@@ -15,6 +17,8 @@ const projects = [
     tech: ['React', 'TypeScript', 'Tailwind CSS', 'Animations'],
     icon: ShoppingBag,
     gradient: 'from-secondary to-primary',
+    github: 'https://github.com/its-ousama/shoe-parallaz',
+    demo: 'https://shoe-parallaz.onrender.com',
   },
   {
     title: 'Math Wars Android',
@@ -22,6 +26,8 @@ const projects = [
     tech: ['Java', 'Android SDK', 'SQLite', 'Game Dev'],
     icon: Calculator,
     gradient: 'from-accent to-primary',
+    github: 'https://github.com/its-ousama/math-wars-android',
+    demo: null,
   },
 ];
 
@@ -85,14 +91,26 @@ export const ProjectsSection = () => {
 
                 {/* Links */}
                 <div className="flex gap-3 pt-4 border-t border-border/50">
-                  <button className="flex items-center gap-2 text-sm font-body text-muted-foreground hover:text-primary transition-colors">
+                  <a 
+                    href={project.github} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm font-body text-muted-foreground hover:text-primary transition-colors"
+                  >
                     <Github size={16} />
                     Code
-                  </button>
-                  <button className="flex items-center gap-2 text-sm font-body text-muted-foreground hover:text-primary transition-colors">
-                    <ExternalLink size={16} />
-                    Live Demo
-                  </button>
+                  </a>
+                  {project.demo && (
+                    <a 
+                      href={project.demo} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm font-body text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      <ExternalLink size={16} />
+                      Live Demo
+                    </a>
+                  )}
                 </div>
               </div>
 
