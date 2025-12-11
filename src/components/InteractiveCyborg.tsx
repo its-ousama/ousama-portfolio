@@ -5,58 +5,71 @@ export const InteractiveCyborg = () => {
   const { normalizedX, normalizedY } = useMousePosition();
 
   return (
-    <div className="relative w-full h-full flex items-center justify-center">
-      {/* Glowing halo behind cyborg */}
+    <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+      {/* Large ambient glow - blends with background */}
       <div 
-        className="absolute w-[600px] h-[600px] rounded-full bg-primary/10 blur-3xl animate-pulse"
+        className="absolute w-[800px] h-[800px] rounded-full animate-pulse-glow"
         style={{
-          transform: `translate(${normalizedX * 20}px, ${normalizedY * 20}px)`,
-          transition: 'transform 0.3s ease-out',
+          background: 'radial-gradient(circle, hsl(35 90% 60% / 0.12) 0%, hsl(350 70% 55% / 0.06) 40%, transparent 70%)',
+          transform: `translate(${normalizedX * 30}px, ${normalizedY * 30}px)`,
+          transition: 'transform 0.5s ease-out',
         }}
       />
       
-      {/* Secondary glow */}
+      {/* Secondary warm glow */}
       <div 
-        className="absolute w-[400px] h-[400px] rounded-full bg-secondary/10 blur-2xl"
+        className="absolute w-[500px] h-[500px] rounded-full"
         style={{
-          transform: `translate(${normalizedX * -15}px, ${normalizedY * -15}px)`,
-          transition: 'transform 0.4s ease-out',
+          background: 'radial-gradient(circle, hsl(350 70% 55% / 0.1) 0%, transparent 60%)',
+          transform: `translate(${normalizedX * -20}px, ${normalizedY * -20}px)`,
+          transition: 'transform 0.6s ease-out',
         }}
       />
 
-      {/* Cyborg image with parallax */}
+      {/* Cyborg image - blended into scene */}
       <div
         className="relative z-10"
         style={{
-          transform: `translate(${normalizedX * 30}px, ${normalizedY * 20}px) rotateY(${normalizedX * 10}deg) rotateX(${-normalizedY * 5}deg)`,
-          transition: 'transform 0.2s ease-out',
+          transform: `translate(${normalizedX * 25}px, ${normalizedY * 15}px) rotateY(${normalizedX * 8}deg) rotateX(${-normalizedY * 4}deg)`,
+          transition: 'transform 0.25s ease-out',
         }}
       >
-        <img
-          src={cyborgImage}
-          alt="AI Cyborg representing passion for artificial intelligence"
-          className="w-full max-w-2xl h-auto object-contain drop-shadow-2xl"
+        {/* Soft vignette behind image */}
+        <div 
+          className="absolute inset-0 scale-125"
           style={{
-            filter: `drop-shadow(0 0 30px hsl(190 100% 50% / 0.4))`,
+            background: 'radial-gradient(ellipse at center, transparent 30%, hsl(240 15% 6%) 70%)',
           }}
         />
         
-        {/* Scan line overlay */}
-        <div className="absolute inset-0 overflow-hidden opacity-20 pointer-events-none">
-          <div className="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent animate-scan-line" />
-        </div>
+        <img
+          src={cyborgImage}
+          alt="AI portrait representing passion for artificial intelligence"
+          className="w-full max-w-xl h-auto object-contain relative z-10"
+          style={{
+            filter: 'drop-shadow(0 0 60px hsl(35 90% 60% / 0.25)) drop-shadow(0 0 100px hsl(350 70% 55% / 0.15))',
+            maskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(to bottom, black 60%, transparent 100%)',
+          }}
+        />
       </div>
 
-      {/* Floating particles around cyborg */}
-      {Array.from({ length: 8 }).map((_, i) => (
+      {/* Soft floating orbs */}
+      {Array.from({ length: 5 }).map((_, i) => (
         <div
           key={i}
-          className="absolute w-2 h-2 rounded-full bg-primary/60 animate-float"
+          className="absolute rounded-full animate-float"
           style={{
-            left: `${30 + Math.random() * 40}%`,
-            top: `${20 + Math.random() * 60}%`,
-            animationDelay: `${i * 0.3}s`,
-            animationDuration: `${2 + Math.random() * 2}s`,
+            width: `${8 + i * 4}px`,
+            height: `${8 + i * 4}px`,
+            background: i % 2 === 0 
+              ? 'radial-gradient(circle, hsl(35 90% 60% / 0.6), transparent)'
+              : 'radial-gradient(circle, hsl(350 70% 55% / 0.5), transparent)',
+            left: `${25 + Math.random() * 50}%`,
+            top: `${20 + Math.random() * 50}%`,
+            animationDelay: `${i * 0.5}s`,
+            animationDuration: `${4 + i}s`,
+            filter: 'blur(1px)',
           }}
         />
       ))}
