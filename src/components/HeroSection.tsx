@@ -48,7 +48,7 @@ export const HeroSection = () => {
             {/* Stats */}
             <div className="flex gap-8 pt-8 border-t border-border/30">
               <div>
-                <div className="font-display text-3xl font-bold text-primary">3+</div>
+                <div className="font-display text-3xl font-bold text-primary">10+</div>
                 <div className="font-body text-sm text-muted-foreground">Projects Built</div>
               </div>
               <div>
