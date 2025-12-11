@@ -12,7 +12,7 @@ const projects = [
     demo: null,
   },
   {
-    title: 'Shoe Parallaz',
+    title: 'Shoe Parallax',
     description: 'Modern e-commerce landing page built with React, TypeScript, and Tailwind CSS. Showcases product displays with smooth animations and responsive design.',
     tech: ['React', 'TypeScript', 'Tailwind CSS', 'Animations'],
     icon: ShoppingBag,
