@@ -1,15 +1,11 @@
-import { InteractiveCyborg } from './InteractiveCyborg';
+import { HeroVisual } from './HeroVisual';
 import { ChevronDown } from 'lucide-react';
 
 export const HeroSection = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-16 overflow-hidden">
-      {/* Cyborg as background element */}
-      <div className="absolute inset-0 flex items-center justify-end">
-        <div className="w-full h-full max-w-4xl ml-auto">
-          <InteractiveCyborg />
-        </div>
-      </div>
+      {/* AI-themed visual background */}
+      <HeroVisual />
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-2xl">
