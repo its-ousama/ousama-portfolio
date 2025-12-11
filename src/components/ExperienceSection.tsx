@@ -28,14 +28,6 @@ const education = [
     location: 'Paris, France',
     description: 'Studying computer science with focus on software engineering, algorithms, and AI technologies.',
   },
-  {
-    type: 'education',
-    title: 'Le Lycée National',
-    role: 'Lebanese Baccalaureate',
-    period: 'July 2023',
-    location: 'Lebanon',
-    description: 'Completed secondary education with strong foundation in mathematics and sciences.',
-  },
 ];
 
 const TimelineItem = ({ item, index, isLeft }: { item: typeof experiences[0]; index: number; isLeft: boolean }) => {
